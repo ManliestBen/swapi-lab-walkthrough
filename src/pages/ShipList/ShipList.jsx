@@ -1,5 +1,7 @@
 import * as apiService from '../../services/apiService'
 import { useEffect, useState } from 'react'
+import Ship from '../../components/Ship/Ship'
+import styles from './ShipList.module.css'
 
 const ShipList = () => {
   const [ships, setShips] = useState([])
@@ -7,14 +9,20 @@ const ShipList = () => {
   useEffect(() => {
     const fetchShipData = async () => {
       const shipData = await apiService.getStarships()
-      setShips(shipData)
+      setShips(shipData.results)
     }
     fetchShipData()
   }, [])
 
+  if (!ships.length) return <h2>Please wait... Loading Ships...</h2>
+  
   return (
     <>
-      <h1>ShipList</h1>
+      <div className={styles.shipContainer}> 
+        {ships.map(ship => 
+          <Ship key={ship.name} ship={ship} />
+        )}
+      </div>
     </>
   )
 }

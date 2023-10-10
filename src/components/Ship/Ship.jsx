@@ -1,8 +1,15 @@
-const Ship = () => {
+import { Link } from 'react-router-dom'
+import styles from './Ship.module.css'
+
+const Ship = ({ship}) => {
   return (
-    <>
-      <h1>Ship Card</h1>
-    </>
+    <div className={styles.shipCard}>
+      <h2>{ship.name}</h2>
+      <div className={styles.linkContainer}>  
+        <Link><button>useLocation</button></Link>
+        <Link><button>NO useLocation</button></Link>
+      </div>
+    </div>
   )
 }
 
