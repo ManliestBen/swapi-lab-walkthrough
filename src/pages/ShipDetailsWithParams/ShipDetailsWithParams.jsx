@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import * as apiService from '../../services/apiService'
 import ShipDetails from "../../components/ShipDetails/ShipDetails"
 
-const ShipDetailsWithoutLocationHook = () => {
+const ShipDetailsWithParams = () => {
   const {shipId} = useParams()
   const [shipDetails, setShipDetails] = useState({})
   const [isLoadingPilotData, setIsLoadingPilotData] = useState(true)
@@ -37,4 +37,4 @@ const ShipDetailsWithoutLocationHook = () => {
   )
 }
 
-export default ShipDetailsWithoutLocationHook
+export default ShipDetailsWithParams

@@ -4,7 +4,7 @@ import * as apiService from '../../services/apiService'
 import ShipDetails from "../../components/ShipDetails/ShipDetails"
 
 
-const ShipDetailsWithLocationHook = () => {
+const ShipDetailsWithLocation = () => {
   const location = useLocation()
   const [shipDetails, setShipDetails] = useState(location.state.ship)
   const [isLoadingPilotData, setIsLoadingPilotData] = useState(true)
@@ -30,4 +30,4 @@ const ShipDetailsWithLocationHook = () => {
   )
 }
 
-export default ShipDetailsWithLocationHook
+export default ShipDetailsWithLocation
