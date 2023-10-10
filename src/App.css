@@ -1,6 +1,15 @@
+@font-face {
+  font-family: 'Jedi';
+  src: local('Jedi'),
+    url('./fonts/Starjedi.ttf');
+}
+
 #root {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Jedi';
+  letter-spacing: 1px;
 }
+

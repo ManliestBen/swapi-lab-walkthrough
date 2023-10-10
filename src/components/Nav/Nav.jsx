@@ -4,7 +4,7 @@ import styles from './Nav.module.css'
 const Nav = () => {
   return ( 
     <nav>
-      <NavLink to='/ships'>STAR WARS STARSHIPS</NavLink>
+      <NavLink to='/ships'>Star wars starships</NavLink>
     </nav>
   )
 }

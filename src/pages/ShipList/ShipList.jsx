@@ -28,13 +28,13 @@ const ShipList = () => {
     setCurrPage(currPage - 1)
   }
 
-  if (isLoading) return <h2>Please wait... Loading Ships...</h2>
+  if (isLoading) return <h2>please wait... loading ships...</h2>
   
   return (
     <>
       <div className={styles.paginationContainer}>
         {currPage > 1 && <h2 onClick={handleDecreasePageCount}>◄</h2>}
-        <h2>Page {currPage} of {pageCount}</h2>
+        <h2>page {currPage} of {pageCount}</h2>
         {currPage !== pageCount && <h2 onClick={handleIncreasePageCount}>►</h2>}
       </div>
       <div className={styles.shipContainer}>
