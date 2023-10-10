@@ -1,8 +1,8 @@
 const BASE_URL = 'https://swapi.dev/api/starships'
 
-export async function getStarships() {
+export async function getStarships(page) {
   try {
-    const res = await fetch(BASE_URL)
+    const res = await fetch(`${BASE_URL}?page=${page}`)
     return res.json()
   } catch (err) {
     console.log(err)
