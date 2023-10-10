@@ -1,20 +1,28 @@
-import { useLocation, Link } from "react-router-dom"
-import { useState } from "react"
+import { useLocation } from "react-router-dom"
+import { useEffect, useState } from "react"
+import * as apiService from '../../services/apiService'
+import ShipDetails from "../../components/ShipDetails/ShipDetails"
 
-import styles from './ShipDetailsWithLocationHook.module.css'
 
 const ShipDetailsWithLocationHook = () => {
   const location = useLocation()
   const [shipDetails, setShipDetails] = useState(location.state.ship)
-  
+  const [isLoadingPilotData, setIsLoadingPilotData] = useState(true)
+  const [pilots, setPilots] = useState([])
+
+  useEffect(() => {
+    if (shipDetails.pilots.length) {
+      const fetchPilotData = async () => {
+        const pilotData = await apiService.getPilots(shipDetails.pilots)
+        setPilots(pilotData)
+      }
+      fetchPilotData()
+      setIsLoadingPilotData(false)
+    } 
+  }, [shipDetails])
+
   return (
-    <div className={styles.shipDetails}>
-      <h2>NAME: {shipDetails.name}</h2>
-      <h2>MODEL: {shipDetails.model}</h2>
-      <h3>MADE BY: {shipDetails.manufacturer}</h3>
-      <h3>HYPERDRIVE RATING: {shipDetails.hyperdrive_rating}</h3>
-      <Link to='/ships'><button>BACK</button></Link>
-    </div>
+    <ShipDetails pilots={pilots} shipDetails={shipDetails} isLoadingPilotData={isLoadingPilotData} />
   )
 }
 

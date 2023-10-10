@@ -17,3 +17,13 @@ export async function getShipData(shipId) {
     console.log(err)
   }
 }
+
+export async function getPilots(pilotsArray) {
+  try {
+    const promises = pilotsArray.map(pilotUrl => fetch(pilotUrl).then(res => res.json()))
+    const pilotData = await Promise.all(promises)
+    return pilotData
+  } catch (err) {
+    console.log(err)
+  }
+}

@@ -1,16 +1,26 @@
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import * as apiService from '../../services/apiService'
-import styles from './ShipDetailsWithoutLocationHook.module.css'
+import ShipDetails from "../../components/ShipDetails/ShipDetails"
 
 const ShipDetailsWithoutLocationHook = () => {
   const {shipId} = useParams()
   const [shipDetails, setShipDetails] = useState({})
+  const [isLoadingPilotData, setIsLoadingPilotData] = useState(true)
+  const [pilots, setPilots] = useState([])
 
   useEffect(() => {
     const fetchShipDetails = async () => {
       const shipData = await apiService.getShipData(shipId)
       setShipDetails(shipData)
+      if (shipData.pilots.length) {
+        const fetchPilotData = async () => {
+          const pilotData = await apiService.getPilots(shipData.pilots)
+          setPilots(pilotData)
+        }
+        fetchPilotData()
+        setIsLoadingPilotData(false)
+      } 
     }
     fetchShipDetails()
   })
@@ -19,15 +29,7 @@ const ShipDetailsWithoutLocationHook = () => {
   if (!shipDetails.name) return <h2>Please wait... Loading Ship...</h2>
 
   return (
-
-    <div className={styles.shipDetails}>
-      <h2>NAME: {shipDetails.name}</h2>
-      <h2>MODEL: {shipDetails.model}</h2>
-      <h3>MADE BY: {shipDetails.manufacturer}</h3>
-      <h3>HYPERDRIVE RATING: {shipDetails.hyperdrive_rating}</h3>
-      <Link to='/ships'><button>BACK</button></Link>
-    </div>
-
+    <ShipDetails pilots={pilots} isLoadingPilotData={isLoadingPilotData} shipDetails={shipDetails} />
   )
 }
 
