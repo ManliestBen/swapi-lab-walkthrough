@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background-color: rgb(67, 67, 67);
+  width: 100%;
+}
+
+nav > a {
+  color: white;
+}
