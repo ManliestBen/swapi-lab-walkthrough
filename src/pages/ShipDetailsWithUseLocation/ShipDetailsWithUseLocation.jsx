@@ -22,7 +22,11 @@ const ShipDetailsWithLocationHook = () => {
   }, [shipDetails])
 
   return (
-    <ShipDetails pilots={pilots} shipDetails={shipDetails} isLoadingPilotData={isLoadingPilotData} />
+    <ShipDetails 
+      pilots={pilots} 
+      shipDetails={shipDetails} 
+      isLoadingPilotData={isLoadingPilotData} 
+    />
   )
 }
 

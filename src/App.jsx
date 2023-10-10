@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 
 import ShipList from './pages/ShipList/ShipList'
-import ShipDetailsWithLocationHook from './pages/ShipDetailsWithLocationHook/ShipDetailsWithLocationHook'
-import ShipDetailsWithoutLocationHook from './pages/ShipDetailsWithoutLocationHook/ShipDetailsWithoutLocationHook'
+import ShipDetailsWithLocationHook from './pages/ShipDetailsWithUseLocation/ShipDetailsWithUseLocation'
+import ShipDetailsWithoutLocationHook from './pages/ShipDetailsWithParams/ShipDetailsWithParams'
 import Nav from './components/Nav/Nav'
 
 

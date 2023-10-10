@@ -29,7 +29,11 @@ const ShipDetailsWithoutLocationHook = () => {
   if (!shipDetails.name) return <h2>Please wait... Loading Ship...</h2>
 
   return (
-    <ShipDetails pilots={pilots} isLoadingPilotData={isLoadingPilotData} shipDetails={shipDetails} />
+    <ShipDetails 
+      pilots={pilots} 
+      isLoadingPilotData={isLoadingPilotData} 
+      shipDetails={shipDetails} 
+    />
   )
 }
 

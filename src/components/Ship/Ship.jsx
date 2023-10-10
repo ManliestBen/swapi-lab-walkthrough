@@ -7,7 +7,7 @@ const Ship = ({ship}) => {
       <h2>{ship.name}</h2>
       <div className={styles.linkContainer}>  
         <Link to='/ships/details' state={{ship}}><button>useLocation</button></Link>
-        <Link to={`/ships/${ship.url.match(/\d+/)}`}><button>NO useLocation</button></Link>
+        <Link to={`/ships/${ship.url.match(/\d+/)}`}><button>useParams</button></Link>
       </div>
     </div>
   )
